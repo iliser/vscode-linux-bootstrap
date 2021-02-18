@@ -29,7 +29,7 @@ else
 
     echo "
 #!/bin/sh
-/home/iliser/vscodes/$1/bin/code \"\$@\"
+$p/bin/code \"\$@\"
 " >$exec_path
     chmod +x $exec_path
     sudo ln $exec_path $sym_link_path
