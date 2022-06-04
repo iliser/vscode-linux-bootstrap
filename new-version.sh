@@ -2,7 +2,7 @@
 
 set -e # stop on first error
 
-scriptDir=$(dirname "$0")
+scriptDir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 p=$(pwd)/$1
 exec_path=$p/launch.sh
 sym_link_path=/usr/local/bin/vscode-$1
@@ -34,4 +34,8 @@ $p/bin/code \"\$@\"
     chmod +x $exec_path
     sudo ln $exec_path $sym_link_path
 
+
+    $scriptDir/install-extensions.sh $1
+    mkdir -p $p/data/user-data/User/
+    curl https://gist.githubusercontent.com/iliser/ff944aeb2fcb868fd274e70c3b57bb62/raw/dff78df391b47f04aaf08427b52dd4880546b875/vscode_settings.json -o $p/data/user-data/User/settings.json
 fi
