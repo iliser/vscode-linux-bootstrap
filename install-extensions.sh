@@ -9,7 +9,7 @@ then
     exit
 else
     echo 'version exists install extensions'
-    cd $parent_path
-    awk '{print $0}' ./versions/default.extension-list ./versions/$1.extension-list 2>/dev/null | xargs -I{} vscode-$1 --install-extension {} --force
-    cd $old_path
+    cd "$parent_path"
+    awk '{print $0}' ./versions/default.extension-list ./versions/"$1".extension-list 2>/dev/null | xargs -I{} vscode-"$1" --install-extension {} --force
+    cd "$old_path"
 fi
