@@ -26,7 +26,7 @@ $p/bin/code \"\$@\"
 " >"$exec_path"
 chmod +x "$exec_path"
 
-sudo ln "$exec_path" "$sym_link_path"
+sudo ln -s "$exec_path" "$sym_link_path"
 
 if [ "$2" = "--update" ]; then
     echo '# copy old user data from tmp'
